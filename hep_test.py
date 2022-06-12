@@ -3,7 +3,6 @@ import webbrowser
 import os
 import zipfile
 import prettytable
-import caesar_cipher
 import tempfile
 import win32api
 import base64
@@ -60,18 +59,6 @@ def on_access_av():
         os.system('cat test.eicar')
 
 
-def on_access_av_dump():
-    """
-    Dump the eicar test file from the python code.
-    """
-    fo = open("eicar.com", "w")
-    str_1 = "A5R!S%@DS[4\SCA54(S^)7FF)7}$HLFDU-VWDQGDUG-DQWLYLUXV-WHVW-ILOH!$K+K*"
-    new = caesar_cipher.caesar(str_1,3,"decode")
-    fo.write(new)
-    fo.close()
-    print(new)
-
-
 def on_access_av_base64():
     eicar = 'WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo='
     decode_e = base64.b64decode(eicar)
@@ -87,7 +74,7 @@ def cred_dump():
     loc = os.getcwd()
     print(loc)
     zip = zipfile.ZipFile('testtool.zip')
-    password = bytes("vpn123",'utf-8')
+    password = bytes("demo",'utf-8')
     zip.extract('procdump.exe')
     payload = loc + "\\procdump.exe -ma lsass.exe lsass.dmp"
     tmp_file_path = tempfile.gettempdir() + "\\dump.bat"
