@@ -23,23 +23,16 @@ def antibot_test():
     :return:
     """
     cp_url = "http://www.threat-cloud.com/test/files/HighConfidenceBot.html"
-    sophos_url = "https://sophostest.com/callhome/index.html"
-    select = input("Type 'cp' for Check Point, type 's' for Sophos: ")
-    if select == 'cp':
-        header = {'user-agent': '*<|>*'}
-        r_cp = requests.get(cp_url, headers=header)
-        print(r_cp.status_code)
-    elif select == 's':
-        header = {'user-agent': '*<|>*'}
-        r_s = requests.get(sophos_url, headers=header)
-        print(r_s.status_code)
+    header = {'user-agent': '*<|>*'}
+    r_cp = requests.get(cp_url, headers=header)
+    print(r_cp.status_code)
+
 
 def zero_phishing():
     """
     Open the zero phishing test page with the new browser windows
     :return:
     """
-    # url = "http://main.sbm-demo.xyz/"
     url = "http://salesforce.sbm-demo.xyz/phishing"
     webbrowser.open_new(url)
 
@@ -51,7 +44,7 @@ def on_access_av():
     loc = os.getcwd()
     print(loc)
     zip = zipfile.ZipFile('testtool.zip')
-    password = bytes("vpn123",'utf-8')
+    password = bytes("demo",'utf-8')
     zip.extractall(path=loc, pwd=password)
     if os.name == 'nt':
         os.system('type test.eicar')
